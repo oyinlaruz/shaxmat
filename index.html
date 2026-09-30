@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline Chess</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="logo"><span class="logo-icon">♞</span><span>OFFLINE CHESS</span></div>
+  <nav>
+    <button class="nav-btn active" data-page="gamePage"><span>♟</span>O‘ynash</button>
+    <button class="nav-btn" id="newGameNav"><span>＋</span>Yangi o‘yin</button>
+    <button class="nav-btn" data-page="profilePage"><span>👤</span>Profil</button>
+    <button class="nav-btn" id="settingsNav"><span>⚙</span>Sozlamalar</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="offline-status"><span class="online-dot"></span>Offline rejim</div><div class="version">v2.0.0</div></div>
+</aside>
+
+<main class="main">
+  <section id="gamePage" class="page active-page">
+    <header class="topbar">
+      <div><h1>Botga qarshi o‘yin</h1><p id="gameStatus">Oq donalar sizniki</p></div>
+      <div class="top-actions"><button id="flipBoard" class="icon-btn">⇅</button><button id="newGameBtn" class="primary-btn">+ Yangi o‘yin</button></div>
+    </header>
+
+    <section class="game-area">
+      <div class="board-column">
+        <div class="player-bar"><div class="player-info"><div class="avatar bot-avatar">🤖</div><div><strong id="blackName">Computer</strong><small id="blackLevel">Expert</small></div></div><div class="clock" id="blackClock">10:00</div></div>
+        <div class="board-wrapper"><div id="chessBoard" class="chess-board"></div></div>
+        <div class="player-bar"><div class="player-info"><div class="avatar player-avatar">♙</div><div><strong id="whiteName">Siz</strong><small>White</small></div></div><div class="clock active-clock" id="whiteClock">10:00</div></div>
+      </div>
+
+      <aside class="game-panel">
+        <div class="panel-card"><div class="panel-title">🎮 O‘yin rejimi</div><select id="gameMode"><option value="bot">🤖 Botga qarshi</option><option value="local">👥 2 kishilik</option></select></div>
+        <div class="panel-card" id="botSettings"><div class="panel-title">🧠 Bot darajasi</div><div class="difficulty-grid">
+          <button data-level="easy" class="difficulty">Easy</button><button data-level="medium" class="difficulty">Medium</button><button data-level="hard" class="difficulty">Hard</button><button data-level="expert" class="difficulty active">Expert</button><button data-level="master" class="difficulty">Master</button><button data-level="champion" class="difficulty">Champion</button>
+        </div><small class="level-note">Master va Champion chuqurroq hisoblaydi.</small></div>
+        <div class="panel-card"><div class="panel-title">⏱ Vaqt</div><div class="time-grid"><button data-time="5" class="time-option">5+0</button><button data-time="10" class="time-option active">10+0</button><button data-time="15" class="time-option">15+10</button></div></div>
+        <div class="moves-card"><div class="moves-header"><span>Yurishlar</span><button id="undoBtn">↶</button></div><div id="moveList" class="move-list"></div></div>
+        <div class="panel-actions"><button id="drawBtn" class="secondary-btn">🤝 Durrang</button><button id="resignBtn" class="danger-btn">🏳 Taslim</button></div>
+      </aside>
+    </section>
+  </section>
+
+  <section id="profilePage" class="page">
+    <header class="topbar"><div><h1>Profil</h1><p>O‘yinchi ma’lumotlaringiz shu qurilmada saqlanadi.</p></div></header>
+    <div class="profile-layout">
+      <div class="profile-card big-profile"><div class="profile-avatar">♟</div><div><span class="profile-label">O‘yinchi</span><h2 id="profileNamePreview">Siz</h2></div></div>
+      <div class="profile-card"><label for="profileName">Ismingiz</label><input id="profileName" maxlength="24" placeholder="Ismingizni yozing"><button id="saveProfile" class="primary-btn full-btn">Saqlash</button><p id="profileSaved" class="saved-text"></p></div>
+    </div>
+  </section>
+</main>
+
+<div id="newGameModal" class="modal hidden"><div class="modal-content"><button class="modal-close" data-close="newGameModal">×</button><h2>Yangi o‘yin</h2><p>O‘yin rejimini tanlang</p><div class="modal-options"><button id="modalBot" class="modal-option"><span>🤖</span><strong>Botga qarshi</strong><small>Kompyuter bilan o‘ynash</small></button><button id="modalLocal" class="modal-option"><span>👥</span><strong>2 kishilik</strong><small>Bir kompyuterda o‘ynash</small></button></div></div></div>
+<div id="resultModal" class="modal hidden"><div class="modal-content result-content"><div id="resultIcon" class="result-icon">🏆</div><h2 id="resultTitle">O‘yin tugadi</h2><p id="resultText">Natija</p><button id="playAgainBtn" class="primary-btn large">Qayta o‘ynash</button></div></div>
+<div id="settingsModal" class="modal hidden"><div class="modal-content"><button class="modal-close" data-close="settingsModal">×</button><h2>Sozlamalar</h2><div class="setting-row"><span>Tovush</span><label class="switch"><input type="checkbox" id="soundToggle" checked><span class="slider"></span></label></div><div class="setting-row"><span>Yurishlarni ko‘rsatish</span><label class="switch"><input type="checkbox" id="hintToggle" checked><span class="slider"></span></label></div><div class="setting-row"><span>Animatsiya</span><label class="switch"><input type="checkbox" id="animationToggle" checked><span class="slider"></span></label></div></div></div>
+
+<script src="js/chess.js"></script>
+<script src="js/bot.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
